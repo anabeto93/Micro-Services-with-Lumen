@@ -28,7 +28,7 @@ class UserController extends Controller
 
     /**
      * Register a new user
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @return JsonResponse
      */
     public function register(Request $request)
@@ -77,7 +77,7 @@ class UserController extends Controller
 
     /**
      * Log a user in given the email and password
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @return mixed
      */
     public function login(Request $request)
@@ -124,5 +124,19 @@ class UserController extends Controller
                 return errorResponse([],'Declined',400,'Wrong username or password');
             }
         }
+    }
+
+    /**
+     * Log the attempted access to see what could be wrong
+     * @param \Illuminate\Http\Request
+     * @return mixed
+     */
+    public function test(Request $request)
+    {
+        Log::info('Request to Test Details');
+        Log::debug($request->all());
+        Log::debug($request->header());
+
+        return "Done";
     }
 }

@@ -32,5 +32,6 @@ $router->group(['middleware' => 'client.credentials'], function() use ($router){
 //UNSECURE ENDPOINTS
 $router->post('register',['as' => 'register', 'uses' => 'User\UserController@register']);
 $router->post('login',['as' => 'login', 'uses' => 'User\UserController@login']);
+$router->post('test',['as' => 'test', 'uses' => 'User\UserController@test']);
 
 
