@@ -13,6 +13,7 @@ trait ConsumeExternalService
      * @param array $formParams
      * @param array $headers
      * @return string
+     * @throws
      */
     public function performRequest($method, $requestUrl, $formParams = [], $headers = [])
     {
