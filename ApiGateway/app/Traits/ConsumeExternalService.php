@@ -16,9 +16,15 @@ trait ConsumeExternalService
      */
     public function performRequest($method, $requestUrl, $formParams = [], $headers = [])
     {
-        $client = new Client([
+        $setup = [
             'base_uri'  =>  $this->baseUri,
-        ]);
+        ];
+
+        if(app()->environment(['local','staging'])) {
+            $setup['verify'] = false; //only verify in production
+        }
+
+        $client = new Client($setup);
 
         if(isset($this->secret))
         {
